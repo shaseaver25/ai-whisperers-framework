@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Whisperers Cooperative — Founding Framework Map</title>
+<style>
+  :root {
+    --bg-page: #FAFAF7;
+    --bg-primary: #FFFFFF;
+    --bg-secondary: #F4F2EC;
+    --bg-tertiary: #F1EFE8;
+    --text-primary: #2C2C2A;
+    --text-secondary: #5F5E5A;
+    --text-tertiary: #888780;
+    --border-tertiary: rgba(60,60,55,0.15);
+    --border-secondary: rgba(60,60,55,0.3);
+    --accent-bg: #EEEDFE;
+    --accent-text: #26215C;
+    --accent-border: #7F77DD;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    background: var(--bg-page);
+    color: var(--text-primary);
+    margin: 0;
+    padding: 2rem 1rem;
+    line-height: 1.6;
+  }
+  .wrapper { max-width: 760px; margin: 0 auto; }
+  h1 { font-size: 22px; font-weight: 500; margin: 0 0 4px; }
+  .subtitle { font-size: 13px; color: var(--text-secondary); margin: 0 0 1.5rem; }
+  .legend { font-size: 12px; color: var(--text-tertiary); margin: 0 0 1rem; line-height: 1.6; }
+  .patterns-row { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 1.5rem; padding: 12px; background: var(--bg-secondary); border-radius: var(--radius-lg); }
+  .patterns-label { font-size: 11px; color: var(--text-tertiary); font-weight: 500; width: 100%; margin-bottom: 4px; letter-spacing: 0.02em; }
+  .pattern-chip { font-size: 12px; padding: 4px 10px; background: var(--bg-primary); border: 0.5px solid var(--border-tertiary); border-radius: 999px; cursor: pointer; color: var(--text-secondary); user-select: none; transition: all 0.15s; }
+  .pattern-chip:hover, .pattern-chip.active { background: var(--accent-bg); color: var(--accent-text); border-color: var(--accent-border); }
+  .cluster { margin-bottom: 1.25rem; }
+  .cluster-title { font-size: 12px; font-weight: 500; color: var(--text-tertiary); margin: 0 0 8px; padding: 0 4px; letter-spacing: 0.02em; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px; }
+  .card { background: var(--bg-primary); border: 0.5px solid var(--border-tertiary); border-radius: var(--radius-lg); padding: 12px 14px; cursor: pointer; transition: border-color 0.15s, background 0.15s; }
+  .card:hover { border-color: var(--border-secondary); }
+  .card.highlighted { border-color: var(--accent-border); background: #FAFAFE; }
+  .card.expanded { background: var(--bg-secondary); }
+  .card-num { font-size: 11px; color: var(--text-tertiary); font-weight: 500; }
+  .card-title { font-size: 14px; font-weight: 500; color: var(--text-primary); margin: 2px 0 4px; line-height: 1.3; }
+  .card-summary { font-size: 12px; color: var(--text-secondary); line-height: 1.5; }
+  .card-detail { margin-top: 12px; padding-top: 12px; border-top: 0.5px solid var(--border-tertiary); }
+  .detail-row { margin-bottom: 10px; }
+  .detail-row:last-child { margin-bottom: 0; }
+  .detail-label { font-size: 10px; color: var(--text-tertiary); font-weight: 500; margin-bottom: 3px; letter-spacing: 0.04em; text-transform: uppercase; }
+  .detail-text { font-size: 13px; color: var(--text-primary); line-height: 1.55; }
+  .detail-patterns { display: flex; flex-wrap: wrap; gap: 4px; }
+  .detail-pattern-tag { font-size: 11px; padding: 2px 8px; background: var(--accent-bg); color: var(--accent-text); border-radius: 999px; }
+  .footer { margin-top: 1.5rem; padding: 14px; background: var(--bg-secondary); border-radius: var(--radius-md); font-size: 12px; color: var(--text-secondary); line-height: 1.6; }
+  .ballot { margin-top: 1.5rem; padding: 16px; border: 0.5px solid var(--border-secondary); border-radius: var(--radius-lg); background: var(--bg-primary); }
+  .ballot-title { font-size: 14px; font-weight: 500; margin: 0 0 8px; }
+  .ballot-options { font-size: 13px; color: var(--text-primary); }
+  .ballot-options label { display: block; padding: 6px 0; cursor: pointer; }
+  .ballot-options input { margin-right: 8px; }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg-page: #1a1a18;
+      --bg-primary: #25251f;
+      --bg-secondary: #2c2c25;
+      --bg-tertiary: #2c2c25;
+      --text-primary: #f1efe8;
+      --text-secondary: #b4b2a9;
+      --text-tertiary: #888780;
+      --border-tertiary: rgba(241,239,232,0.15);
+      --border-secondary: rgba(241,239,232,0.3);
+      --accent-bg: #3C3489;
+      --accent-text: #CECBF6;
+      --accent-border: #7F77DD;
+    }
+    .card.highlighted { background: #2a2840; }
+  }
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+<h1>AI Whisperers Cooperative — Founding Framework</h1>
+<p class="subtitle">Drafted May 5, 2026 by Shannon Seaver and Randy Smasal. Proposal for member vote.</p>
+
+<div class="legend">
+  Hover a success pattern below to highlight which framework sections operationalize it. Click any section card to expand the recommendation, reasoning, and failure mode.
+</div>
+
+<div class="patterns-row">
+  <span class="patterns-label">Eight success patterns we're designing toward</span>
+  <span class="pattern-chip" data-pattern="1">1. Mission alignment</span>
+  <span class="pattern-chip" data-pattern="2">2. Transparent governance</span>
+  <span class="pattern-chip" data-pattern="3">3. Continuous education</span>
+  <span class="pattern-chip" data-pattern="4">4. Patronage</span>
+  <span class="pattern-chip" data-pattern="5">5. Indivisible reserves</span>
+  <span class="pattern-chip" data-pattern="6">6. Federation</span>
+  <span class="pattern-chip" data-pattern="7">7. Ethical tech design</span>
+  <span class="pattern-chip" data-pattern="8">8. Newcomer onboarding</span>
+</div>
+
+<div id="clusters"></div>
+
+<div class="ballot">
+  <div class="ballot-title">The vote</div>
+  <div class="ballot-options">
+    <label><input type="radio" name="vote">Adopt as proposed. Working groups form within 14 days. 90-day review on the calendar.</label>
+    <label><input type="radio" name="vote">Adopt with amendments (specify which sections in your reply).</label>
+    <label><input type="radio" name="vote">Do not adopt. Propose alternative in your reply.</label>
+  </div>
+</div>
+
+<div class="footer">
+  Full text and rationale: see founding_framework_proposal.md. Feedback to Shannon (shannon@the-ai-whisperers.com) and Randy (randysmasal@liftteams.com). Vote due 7 days from circulation.
+</div>
+
+</div>
+
+<script>
+  const sections = [
+    { num: 1, title: "Vision and mission", cluster: "Identity", summary: "Problem-first, not AI-first. Shared upside.", patterns: [1],
+      recommendation: "Minnesota-based cooperative serving SMBs, schools, nonprofits, and government. We help organizations adopt AI in ways that make humans more capable, not less. We win by being problem-first and by sharing the upside with the people who do the work.",
+      why: "Names who we serve (4 sectors), how we work (problem-first), and what makes us different from a consulting firm (shared upside).",
+      failure: "Six months in, three members realize they thought the cooperative was something else." },
+    { num: 2, title: "Governance", cluster: "Governance and discipline", summary: "Hybrid: 3-seat board plus member votes.", patterns: [1, 2],
+      recommendation: "Members vote on vision, bylaws, admission, dissolution, surplus distribution, and board election. Elected board (3 seats, staggered 1-year terms) handles strategy between meetings. Working groups make operational calls in their domain. Simple majority for ops, two-thirds for bylaws. 60% quorum.",
+      why: "Pure 1v1 dies under its own weight. Pure weighted creates oligarchy. Hybrid balances accessibility with operational speed.",
+      failure: "Traditional means every call needs a vote, we move at the speed of the slowest member. Weighted means three people decide everything, new members have no voice." },
+    { num: 3, title: "Membership", cluster: "Governance and discipline", summary: "Individuals only, year 1.", patterns: [8],
+      recommendation: "Year 1: individuals only. Year 2: reconsider organizational membership if there's pull. Active vs. inactive status: members who don't engage in 90 days move to inactive (no vote, no patronage); reactivate by joining a working group.",
+      why: "Multi-stakeholder is resilient but requires absolute clarity on roles. We don't have it yet. Adding orgs in year 2 is easier than removing them.",
+      failure: "We spend six months arguing about whether orgs vote, whose reps vote, and weighted by what — instead of doing client work." },
+    { num: 4, title: "Equity and patronage", cluster: "Economics", summary: "$300 buy-in plus earn-in plus 25% reserves.", patterns: [4, 5],
+      recommendation: "$300 buy-in (refundable within 90 days). Earn-in: 1 unit per logged hour, capped at 2,000 units in year 1. Annual patronage distribution from surplus, voted by members. 25% of surplus goes to indivisible reserves that cannot be distributed.",
+      why: "Pure earn-in creates free-rider problems. Pure buy-in stops feeling meaningful once paid. Hybrid plus reserves equals real co-op economics.",
+      failure: "First lean year, members vote to drain reserves. Without an indivisible floor, no buffer for the second lean year." },
+    { num: 5, title: "Target market", cluster: "Market and partners", summary: "Four sector pods, each with a lead.", patterns: [6],
+      recommendation: "Four sector pods: Education (superintendents, deans), Business / SMB (HR directors, COOs), Nonprofit (executive directors), Government (agency and IT directors). Each pod has a designated lead. Members can belong to multiple pods. Pro-bono pilot in each sector.",
+      why: "Narrow locks out members whose expertise spans sectors. Opportunistic creates messaging chaos. Pods give focus without exclusion.",
+      failure: "Narrow concentrates so hard we lose half the talent. Opportunistic says yes to everything and develops no sector reputation." },
+    { num: 6, title: "Working groups", cluster: "Operations", summary: "Five groups, charters in 30 days.", patterns: [2],
+      recommendation: "Five WGs: Membership and Governance, Discovery (4 sector sub-pods), Lead Generation and Marketing, Training Delivery, Infrastructure and AI Operations. Each has a lead and a one-page charter within 30 days. Biweekly meetings, published minutes. Members commit to one or two WGs.",
+      why: "AI and Infrastructure can't disappear — somebody owns the tech stack and Humble Good integration. Putting it back as its own WG protects it from being absorbed and forgotten.",
+      failure: "Collapse to 4 and the dropped function silently doesn't get done. May 5 cut dropped Infrastructure; Apr 30 cut had no Lead Gen. Neither is OK." },
+    { num: 7, title: "AI integration", cluster: "Operations", summary: "Advisory for clients, augmented internally.", patterns: [7],
+      recommendation: "Client engagements: AI assists, human decides. Internal ops: AI can directly influence matching, lead scoring, and patronage validation. Fair allocation requirement: any AI used to allocate work or compensation must publish its rules. Quarterly review by Membership and Governance WG.",
+      why: "Limits liability with clients in year 1 while still letting the cooperative scale its own operations. Protects against opaque internal allocation, which is how member trust collapses.",
+      failure: "Jump to autonomous internally and the matching algorithm allocates badly once or twice. Trust dies." },
+    { num: 8, title: "Tech stack", cluster: "Operations", summary: "Minimal opinionated picks.", patterns: [6, 7],
+      recommendation: "Google Workspace (collaboration), Slack (communication), Humble Good (knowledge base and shared agents — Jamie's founding-cohort offer), Apollo (lead gen, already purchased), Notion or Airtable (member ops, WG decides), paid LLM tier like Claude or ChatGPT Team (IP protection per Kelly's point). Members keep their own tools for client work.",
+      why: "Standardize on what the cooperative needs to operate; let members keep their own preferences for client delivery. Humble Good integration is real federation — using a member's product.",
+      failure: "No standard means every project debates tooling, knowledge silos form, the cooperative learns nothing across engagements." },
+    { num: 9, title: "Engagement format", cluster: "Operations", summary: "Weekly dojo, conference deferred.", patterns: [3, 6],
+      recommendation: "Weekly virtual dojo (60 min): rotating members bring real client problems, group works them live. Quarterly in-person workshop (4 hours). Co-working: Steve Blixrud space (pricing pending), frequency from survey. Conference deferred to year 2.",
+      why: "Conference is 9 months out — too slow for action-oriented members. Dojo gets work flowing this month. Conference becomes a real capstone in 2027 once we have case studies.",
+      failure: "Lead with the conference and we spend 9 months on event planning while the cooperative itself stalls." },
+    { num: 10, title: "Onboarding and education", cluster: "Operations", summary: "30-day pathway plus biweekly skill-share.", patterns: [3, 8],
+      recommendation: "30-day onboarding: every new member gets a buddy from a different sector pod. Curriculum covers cooperative basics, tech stack, one shadowed discovery call, intro to one WG. Biweekly internal skill-share alternates with the dojo — one member teaches the group something they're expert in.",
+      why: "Cooperatives die when newcomers can't get traction. Founding members get stale if the only people they teach are clients.",
+      failure: "No onboarding means newcomers drift. No internal education means we sell skills we're not refreshing." },
+    { num: 11, title: "Federation", cluster: "Market and partners", summary: "Year 1 partnerships exploratory only.", patterns: [6],
+      recommendation: "Map partnerships in year 1, formalize in year 2. Targets: MN Women AI (Caroline overlap), AI Monsters (Jeanette — discovery call to evaluate their structural offering), Cooperative Network of Minnesota, Hennepin Elevate, Ramsey County small business support. No formal contracts in year 1.",
+      why: "Network effects make co-ops resilient, but formal federation before we know our own shape locks us into wrong relationships.",
+      failure: "Skip and the cooperative operates in isolation, losing exactly the multiplier that makes the model work." },
+    { num: 12, title: "Transparency commitments", cluster: "Governance and discipline", summary: "Binding from day one.", patterns: [2],
+      recommendation: "Meeting minutes published to all members within 48 hours. Decision log: every binding decision with date, voters, outcome. Monthly financial summary: revenue, expenses, reserves, patronage accrual. Quarterly sanitized public update.",
+      why: "Transparent governance is a discipline, not a design choice. Without artifacts, transparency stays a claim.",
+      failure: "Skip and members don't trust the board, outsiders can't tell what we do, and 'transparent governance' becomes the kind of phrase nobody believes anymore." },
+    { num: 13, title: "90-day review", cluster: "Governance and discipline", summary: "Mandatory review of every provision.", patterns: [1, 2, 3, 4, 5, 6, 7, 8],
+      recommendation: "Every provision in this framework is up for review at day 90. Member vote on what to keep, change, or drop. Required agenda item: 'What did we get wrong? What surprised us?' This is not optional.",
+      why: "Difference between bylaws-as-cement and a learning organization. The 90-day review is the strategic spine that lets action-oriented members feel unblocked and structure-oriented members feel safe.",
+      failure: "Without this, rigid bylaws written before we had operating data become the thing we work around instead of with." },
+    { num: 14, title: "What's deferred", cluster: "Scope", summary: "Six decisions deliberately not made now.", patterns: [],
+      recommendation: "Specific bylaw language (Membership and Governance WG drafts in 30 days). Pricing for client work (set after first engagements). Hourly comp rates (after first 90 days). Specific tool picks within categories (WG decides). Conference plan (year 2). Org membership rules (year 2).",
+      why: "Naming what's deferred prevents 'I thought we were deciding that today' disputes later.",
+      failure: "Pretend everything got decided and the gaps get filled by whoever talks loudest in the next meeting." }
+  ];
+
+  const clusters = ["Identity", "Governance and discipline", "Economics", "Market and partners", "Operations", "Scope"];
+  const container = document.getElementById('clusters');
+  clusters.forEach(name => {
+    const cluster = document.createElement('div');
+    cluster.className = 'cluster';
+    cluster.innerHTML = `<div class="cluster-title">${name}</div><div class="cards"></div>`;
+    const cards = cluster.querySelector('.cards');
+    sections.filter(s => s.cluster === name).forEach(s => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.dataset.section = s.num;
+      card.dataset.patterns = s.patterns.join(',');
+      const patternTags = s.patterns.map(p => `<span class="detail-pattern-tag">Pattern ${p}</span>`).join('');
+      card.innerHTML = `
+        <div class="card-num">§${s.num}</div>
+        <div class="card-title">${s.title}</div>
+        <div class="card-summary">${s.summary}</div>
+        <div class="card-detail" style="display:none;">
+          <div class="detail-row"><div class="detail-label">Recommendation</div><div class="detail-text">${s.recommendation}</div></div>
+          <div class="detail-row"><div class="detail-label">Why</div><div class="detail-text">${s.why}</div></div>
+          <div class="detail-row"><div class="detail-label">Failure mode if we choose differently</div><div class="detail-text">${s.failure}</div></div>
+          ${s.patterns.length ? `<div class="detail-row"><div class="detail-label">Operationalizes</div><div class="detail-patterns">${patternTags}</div></div>` : ''}
+        </div>`;
+      card.addEventListener('click', () => {
+        const detail = card.querySelector('.card-detail');
+        const isOpen = card.classList.contains('expanded');
+        document.querySelectorAll('.card.expanded').forEach(c => {
+          c.classList.remove('expanded');
+          c.querySelector('.card-detail').style.display = 'none';
+        });
+        if (!isOpen) {
+          card.classList.add('expanded');
+          detail.style.display = 'block';
+        }
+      });
+      cards.appendChild(card);
+    });
+    container.appendChild(cluster);
+  });
+
+  document.querySelectorAll('.pattern-chip').forEach(chip => {
+    const p = chip.dataset.pattern;
+    const highlight = on => {
+      document.querySelectorAll('.card').forEach(card => {
+        const patterns = card.dataset.patterns.split(',');
+        if (patterns.includes(p)) card.classList.toggle('highlighted', on);
+      });
+      chip.classList.toggle('active', on);
+    };
+    chip.addEventListener('mouseenter', () => highlight(true));
+    chip.addEventListener('mouseleave', () => highlight(false));
+    chip.addEventListener('click', () => {
+      const wasActive = chip.classList.contains('active');
+      document.querySelectorAll('.pattern-chip.active').forEach(c => c.classList.remove('active'));
+      document.querySelectorAll('.card.highlighted').forEach(c => c.classList.remove('highlighted'));
+      if (!wasActive) highlight(true);
+    });
+  });
+</script>
+</body>
+</html>

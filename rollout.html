@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Whisperers Cooperative — Rollout Timeline</title>
+<style>
+  :root {
+    --bg-page: #FAFAF7;
+    --bg-primary: #FFFFFF;
+    --bg-secondary: #F4F2EC;
+    --text-primary: #2C2C2A;
+    --text-secondary: #5F5E5A;
+    --text-tertiary: #888780;
+    --border-tertiary: rgba(60,60,55,0.15);
+    --border-secondary: rgba(60,60,55,0.3);
+    --accent-bg: #EEEDFE;
+    --accent-text: #26215C;
+    --accent-text-mid: #534AB7;
+    --accent-border: #7F77DD;
+    --success: #1D9E75;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    background: var(--bg-page);
+    color: var(--text-primary);
+    margin: 0;
+    padding: 2rem 1rem;
+    line-height: 1.6;
+  }
+  .wrapper { max-width: 760px; margin: 0 auto; }
+  h1 { font-size: 22px; font-weight: 500; margin: 0 0 4px; }
+  .subtitle { font-size: 13px; color: var(--text-secondary); margin: 0 0 1.5rem; }
+  .legend2 { font-size: 12px; color: var(--text-tertiary); margin: 0 0 1rem; line-height: 1.6; }
+  .phase-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 6px; margin: 0 0 1rem; }
+  .phase-chip { background: var(--bg-primary); border: 0.5px solid var(--border-tertiary); border-radius: var(--radius-md); padding: 10px 8px; cursor: pointer; text-align: center; user-select: none; transition: all 0.15s; }
+  .phase-chip:hover { border-color: var(--border-secondary); }
+  .phase-chip.active { background: var(--accent-bg); border-color: var(--accent-border); }
+  .phase-num { font-size: 10px; color: var(--text-tertiary); font-weight: 500; letter-spacing: 0.05em; }
+  .phase-chip.active .phase-num { color: var(--accent-text-mid); }
+  .phase-name { font-size: 13px; font-weight: 500; color: var(--text-primary); margin: 2px 0; line-height: 1.2; }
+  .phase-chip.active .phase-name { color: var(--accent-text); }
+  .phase-when { font-size: 11px; color: var(--text-secondary); }
+  .phase-chip.active .phase-when { color: var(--accent-text-mid); }
+  .phase-detail { background: var(--bg-secondary); border-radius: var(--radius-lg); padding: 16px 18px; }
+  .phase-detail-header { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; padding-bottom: 12px; border-bottom: 0.5px solid var(--border-tertiary); }
+  .phase-detail-title { font-size: 16px; font-weight: 500; margin: 0; }
+  .phase-detail-when { font-size: 12px; color: var(--text-secondary); }
+  .phase-section-label { font-size: 10px; color: var(--text-tertiary); font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; margin: 12px 0 6px; }
+  .phase-section-label:first-of-type { margin-top: 0; }
+  .activity-list { margin: 0; padding-left: 0; list-style: none; }
+  .activity-list li { font-size: 13px; color: var(--text-primary); line-height: 1.55; padding: 4px 0 4px 18px; position: relative; }
+  .activity-list li::before { content: ""; position: absolute; left: 4px; top: 12px; width: 5px; height: 5px; border-radius: 50%; background: var(--accent-border); }
+  .activity-list li code { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 11px; padding: 1px 5px; background: var(--accent-bg); color: var(--accent-text); border-radius: 4px; }
+  .ac-list { margin: 0; padding-left: 0; list-style: none; }
+  .ac-list li { font-size: 12px; color: var(--text-secondary); line-height: 1.5; padding: 3px 0 3px 18px; position: relative; }
+  .ac-list li::before { content: "✓"; position: absolute; left: 0; top: 3px; color: var(--success); font-size: 12px; font-weight: 500; }
+  .footer2 { margin-top: 1.5rem; padding: 14px; background: var(--bg-secondary); border-radius: var(--radius-md); font-size: 12px; color: var(--text-secondary); line-height: 1.6; }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg-page: #1a1a18;
+      --bg-primary: #25251f;
+      --bg-secondary: #2c2c25;
+      --text-primary: #f1efe8;
+      --text-secondary: #b4b2a9;
+      --text-tertiary: #888780;
+      --border-tertiary: rgba(241,239,232,0.15);
+      --border-secondary: rgba(241,239,232,0.3);
+      --accent-bg: #3C3489;
+      --accent-text: #CECBF6;
+      --accent-text-mid: #AFA9EC;
+      --accent-border: #7F77DD;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+<h1>AI Whisperers Cooperative — Rollout Timeline</h1>
+<p class="subtitle">Six phases from vote to first 90-day review. Activities and acceptance criteria for each phase.</p>
+
+<div class="legend2">
+  Click any phase to see its activities and acceptance criteria. Section refs (e.g. §6) link back to the founding framework proposal.
+</div>
+
+<div class="phase-strip" id="phase-strip"></div>
+<div class="phase-detail" id="phase-detail"></div>
+
+<div class="footer2">
+  Phases 3 and 4 deliberately overlap — first client work starts before the first operating cycle ends. Full framework: founding_framework_proposal.md.
+</div>
+
+</div>
+
+<script>
+  const phases = [
+    { num: 0, name: "Pre-vote", when: "Now → +2 wks",
+      activities: [
+        { text: "Shannon and Randy finalize this framework", refs: [] },
+        { text: "Send to membership with vote ballot", refs: [] },
+        { text: "7-day comment period, then vote", refs: [] },
+        { text: "Vote close = start of Phase 1", refs: [] }
+      ],
+      criteria: ["Vote ballot is unambiguous and includes amendment path"] },
+    { num: 1, name: "Constitutional", when: "Vote close → wk 2",
+      activities: [
+        { text: "Vision, governance, membership, equity, transparency adopted", refs: ["§1", "§2", "§3", "§4", "§12"] },
+        { text: "Interim 3-seat board elected (1-year staggered terms)", refs: ["§2"] },
+        { text: "$300 buy-ins collected; member roster published", refs: ["§4"] },
+        { text: "Google Workspace + Slack provisioned", refs: ["§8"] },
+        { text: "First decision logged in the public decision log", refs: ["§12"] }
+      ],
+      criteria: ["Phase 1 closes within 14 days of vote close — board surfaces blocker if not"] },
+    { num: 2, name: "Operational structure", when: "Wks 2–4",
+      activities: [
+        { text: "5 working groups form, leads assigned, charters drafted", refs: ["§6"] },
+        { text: "4 sector pod leads confirmed (Edu / Biz / Nonprofit / Gov)", refs: ["§5"] },
+        { text: "Tech stack picks made within categories", refs: ["§8"] },
+        { text: "AI integration policy ratified (advisory clients / augmented internal)", refs: ["§7"] },
+        { text: "Membership & Governance WG begins drafting bylaw language", refs: ["§14"] }
+      ],
+      criteria: ["Every WG has a published one-page charter by end of Phase 2"] },
+    { num: 3, name: "First client work", when: "Wks 3–8",
+      activities: [
+        { text: "Lead Gen WG starts Apollo workflows; first prospects entered", refs: ["§6"] },
+        { text: "Discovery WG: Burnsville pilot scoped + sector-pod outreach launched", refs: ["§5"] },
+        { text: "First weekly virtual dojo session", refs: ["§9"] },
+        { text: "First member onboarding cohort with cross-pod buddies", refs: ["§10"] },
+        { text: "Training Delivery WG begins August AI Champion Training prep", refs: ["§6"] },
+        { text: "Humble Good integration scoped with Jamie", refs: ["§8"] }
+      ],
+      criteria: ["At least one client engagement underway by end of Phase 3"] },
+    { num: 4, name: "First operating cycle", when: "Wks 6–12",
+      activities: [
+        { text: "First pro-bono case study delivered", refs: ["§5"] },
+        { text: "First quarterly in-person workshop", refs: ["§9"] },
+        { text: "First internal skill-share session", refs: ["§10"] },
+        { text: "Federation discovery calls (MN Women AI, AI Monsters, Co-op Network of MN)", refs: ["§11"] },
+        { text: "First monthly financial summary published to members", refs: ["§12"] },
+        { text: "Steve Blixrud cowork space activated (if survey supports it)", refs: ["§9"] }
+      ],
+      criteria: ["First public quarterly update published at end of Phase 4"] },
+    { num: 5, name: "90-day review", when: "Day 90",
+      activities: [
+        { text: "Full framework review + member vote on what to keep, change, drop", refs: ["§13"] },
+        { text: "Bylaw language ratified", refs: ["§14"] },
+        { text: "Client pricing standardized; hourly comp rates set", refs: ["§14"] },
+        { text: "Year 2 planning: org membership, conference, federation contracts", refs: ["§14"] }
+      ],
+      criteria: ["90-day review actually happens on day 90 — not day 100, not day 120"] }
+  ];
+
+  const strip = document.getElementById('phase-strip');
+  const detail = document.getElementById('phase-detail');
+
+  function render(idx) {
+    document.querySelectorAll('.phase-chip').forEach((c, i) => c.classList.toggle('active', i === idx));
+    const p = phases[idx];
+    const activitiesHtml = p.activities.map(a => {
+      const refs = a.refs.length ? ' ' + a.refs.map(r => `<code>${r}</code>`).join(' ') : '';
+      return `<li>${a.text}${refs}</li>`;
+    }).join('');
+    const criteriaHtml = p.criteria.map(c => `<li>${c}</li>`).join('');
+    detail.innerHTML = `
+      <div class="phase-detail-header">
+        <div>
+          <div class="phase-num">Phase ${p.num}</div>
+          <div class="phase-detail-title">${p.name}</div>
+        </div>
+        <div class="phase-detail-when">${p.when}</div>
+      </div>
+      <div class="phase-section-label">Activities</div>
+      <ul class="activity-list">${activitiesHtml}</ul>
+      <div class="phase-section-label">Acceptance criteria</div>
+      <ul class="ac-list">${criteriaHtml}</ul>
+    `;
+  }
+
+  phases.forEach((p, i) => {
+    const chip = document.createElement('div');
+    chip.className = 'phase-chip';
+    chip.innerHTML = `<div class="phase-num">PHASE ${p.num}</div><div class="phase-name">${p.name}</div><div class="phase-when">${p.when}</div>`;
+    chip.addEventListener('click', () => render(i));
+    chip.addEventListener('mouseenter', () => render(i));
+    strip.appendChild(chip);
+  });
+
+  render(0);
+</script>
+</body>
+</html>

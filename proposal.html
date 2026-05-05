@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>AI Whisperers Cooperative — Founding Framework Proposal</title>
+<style>
+  :root {
+    --bg-page: #FAFAF7;
+    --bg-primary: #FFFFFF;
+    --bg-secondary: #F4F2EC;
+    --text-primary: #2C2C2A;
+    --text-secondary: #5F5E5A;
+    --text-tertiary: #888780;
+    --border-tertiary: rgba(60,60,55,0.15);
+    --border-secondary: rgba(60,60,55,0.3);
+    --accent-bg: #EEEDFE;
+    --accent-text: #26215C;
+    --accent-text-mid: #534AB7;
+    --accent-border: #7F77DD;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    background: var(--bg-page);
+    color: var(--text-primary);
+    margin: 0;
+    padding: 2rem 1rem;
+    line-height: 1.7;
+    font-size: 15px;
+  }
+  .wrapper { max-width: 720px; margin: 0 auto; }
+  .nav-back { display: inline-block; font-size: 12px; color: var(--text-secondary); text-decoration: none; margin-bottom: 1.5rem; }
+  .nav-back:hover { color: var(--accent-text-mid); }
+  #content h1 { font-size: 26px; font-weight: 500; margin: 1rem 0 8px; line-height: 1.2; }
+  #content h2 { font-size: 20px; font-weight: 500; margin: 2.5rem 0 0.75rem; line-height: 1.3; padding-top: 1rem; border-top: 0.5px solid var(--border-tertiary); }
+  #content h2:first-of-type { border-top: none; padding-top: 0; }
+  #content h3 { font-size: 16px; font-weight: 500; margin: 1.5rem 0 0.5rem; }
+  #content p { margin: 0 0 1rem; }
+  #content ul, #content ol { margin: 0 0 1rem; padding-left: 1.5rem; }
+  #content li { margin-bottom: 0.4rem; line-height: 1.6; }
+  #content strong { font-weight: 500; color: var(--text-primary); }
+  #content blockquote { margin: 1rem 0; padding: 12px 16px; background: var(--bg-secondary); border-left: 2px solid var(--accent-border); border-radius: 0 var(--radius-md) var(--radius-md) 0; font-style: italic; color: var(--text-secondary); }
+  #content code { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 13px; padding: 1px 5px; background: var(--accent-bg); color: var(--accent-text); border-radius: 4px; }
+  #content table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 14px; }
+  #content th, #content td { text-align: left; padding: 8px 10px; border-bottom: 0.5px solid var(--border-tertiary); vertical-align: top; }
+  #content th { font-weight: 500; color: var(--text-secondary); font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+  #content hr { border: none; border-top: 0.5px solid var(--border-tertiary); margin: 2rem 0; }
+  #content input[type="checkbox"] { margin-right: 6px; }
+  #content a { color: var(--accent-text-mid); text-decoration: none; }
+  #content a:hover { text-decoration: underline; }
+  .loading { color: var(--text-tertiary); font-size: 14px; padding: 2rem 0; text-align: center; }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg-page: #1a1a18;
+      --bg-primary: #25251f;
+      --bg-secondary: #2c2c25;
+      --text-primary: #f1efe8;
+      --text-secondary: #b4b2a9;
+      --text-tertiary: #888780;
+      --border-tertiary: rgba(241,239,232,0.15);
+      --border-secondary: rgba(241,239,232,0.3);
+      --accent-bg: #3C3489;
+      --accent-text: #CECBF6;
+      --accent-text-mid: #AFA9EC;
+      --accent-border: #7F77DD;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="wrapper">
+<a href="index.html" class="nav-back">← Back to portal</a>
+<div id="content"><div class="loading">Loading proposal…</div></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+<script>
+  fetch('founding_framework_proposal.md')
+    .then(r => r.text())
+    .then(md => {
+      const html = marked.parse(md, { gfm: true, breaks: false });
+      document.getElementById('content').innerHTML = html;
+      // Anchor for ballot link from index.html
+      const headings = document.querySelectorAll('#content h2');
+      headings.forEach(h => {
+        if (h.textContent.toLowerCase().includes('the vote')) {
+          h.id = 'the-vote';
+        }
+      });
+      if (window.location.hash) {
+        const target = document.querySelector(window.location.hash);
+        if (target) target.scrollIntoView();
+      }
+    })
+    .catch(err => {
+      document.getElementById('content').innerHTML = '<p style="color: var(--text-secondary);">Could not load proposal. <a href="founding_framework_proposal.md">Download the markdown source</a> instead.</p>';
+    });
+</script>
+</body>
+</html>
